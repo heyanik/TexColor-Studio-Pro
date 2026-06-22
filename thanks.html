@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You! - TexColor Studio Pro</title>
+  <style>
+    :root {
+      --bg-main: #0a0b10;
+      --bg-panel: #121420;
+      --accent: #3b82f6;
+      --accent-pink: #ec4899;
+      --text-main: #f8fafc;
+      --text-muted: #64748b;
+      --border: #22263f;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thank-you-card {
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.025em;
+      background: linear-gradient(135deg, var(--text-main), var(--accent-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .flower-btn {
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .flower-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5);
+    }
+
+    .flower-btn:active {
+      transform: translateY(1px);
+    }
+
+    .flower-btn.sent {
+      background: var(--border);
+      color: var(--text-muted);
+      pointer-events: none;
+      box-shadow: none;
+    }
+
+    /* BACK ANCHOR */
+    .back-link {
+      margin-top: 2rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover {
+      color: var(--accent);
+    }
+
+    /* FLOATING FLOWER ANIMATION ENGINE */
+    .floating-flower {
+      position: absolute;
+      bottom: -50px;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 2rem;
+      user-select: none;
+      animation: floatUp 4s linear forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thank-you-card">
+    <h1>Hey, Friend!</h1>
+    <p>
+      Thanks for using the app! I truly appreciate that it's useful to your workflow. Have an absolutely fantastic day! ✨
+    </p>
+    <p style="font-size: 0.95rem; font-style: italic; margin-bottom: 1.5rem;">
+      If you found this software genuinely helpful, send me some flowers below!
+    </p>
+    
+    <button class="flower-btn" id="flowerBtn">
+      <span>Send Flowers</span> 🌸
+    </button>
+  </div>
+
+  <a href="texcolor_studio.html" class="back-link">← Return to Workstation</a>
+
+  <script>
+    const flowerBtn = document.getElementById('flowerBtn');
+    const flowerVarieties = ['🌸', '🌹', '🌷', '🌺', '🌼', '💐', '🌻'];
+
+    // SETUP EMAIL KEY HERE
+    // Go to https://web3forms.com to get a free Access Key sent to your email instantly.
+    const WEB3FORMS_ACCESS_KEY = "d2cc31fa-76bc-467f-81f7-b1a370f01f67"; 
+
+    flowerBtn.addEventListener('click', () => {
+      // 1. Immediately fire the visual reward celebration
+      triggerFlowerShower();
+
+      // 2. Lock button state to prevent dual submissions
+      flowerBtn.classList.add('sent');
+      flowerBtn.innerHTML = '<span>Flowers Sent! Thank You</span> 💖';
+
+      // 3. Silently dispatch background analytic email to you via Web3Forms
+      if(WEB3FORMS_ACCESS_KEY !== "YOUR_ACCESS_KEY_HERE") {
+        sendNotificationMail();
+      }
+    });
+
+    function triggerFlowerShower() {
+      // Spawns 40 procedural flowers with randomized vectors over a staggered window
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const flowerElement = document.createElement('div');
+          flowerElement.className = 'floating-flower';
+          
+          // Randomize attributes for a natural flow
+          flowerElement.innerText = flowerVarieties[Math.floor(Math.random() * flowerVarieties.length)];
+          flowerElement.style.left = Math.random() * 100 + 'vw';
+          
+          const size = Math.random() * 1.5 + 1; // 1rem to 2.5rem
+          flowerElement.style.fontSize = `${size}rem`;
+          
+          // Speed scale variation
+          const duration = Math.random() * 2 + 3; // 3s to 5s
+          flowerElement.style.animationDuration = `${duration}s`;
+          
+          document.body.appendChild(flowerElement);
+
+          // Clean DOM memory lifecycle leak avoidance
+          setTimeout(() => {
+            flowerElement.remove();
+          }, duration * 1000);
+
+        }, i * 60); 
+      }
+    }
+
+    async function sendNotificationMail() {
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "🎉 App Value Milestone: A user sent you flowers!",
+        from_name: "TexColor Studio Utility Engine",
+        message: "Great news, Anik! A user interacted with your application, found it incredibly valuable, and clicked your flower support button to show their appreciation."
+      };
+
+      try {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (error) {
+        console.error("Silent diagnostic transmission delayed:", error);
+      }
+    }
+  </script>
+</body>
+</html>
