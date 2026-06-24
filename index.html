@@ -415,35 +415,35 @@
       <hr style="border:0; border-top:1px solid var(--border);">
 
       <div class="matrix-section">
-        <span class="variant-code" style="font-weight:600; text-align: left;">Micro-Tints (+1.2% Lightness)</span>
+        <!-- <span class="variant-code" style="font-weight:600; text-align: left;">Micro-Tints (+1.2% Lightness)</span> -->
         <div class="matrix-scroll-wrapper">
           <div class="matrix-grid" id="rowTints"></div>
         </div>
       </div>
 
       <div class="matrix-section">
-        <span class="variant-code" style="font-weight:600; text-align: left;">Micro-Shades (-1.2% Lightness)</span>
+        <!-- <span class="variant-code" style="font-weight:600; text-align: left;">Micro-Shades (-1.2% Lightness)</span> -->
         <div class="matrix-scroll-wrapper">
           <div class="matrix-grid" id="rowShades"></div>
         </div>
       </div>
 
       <div class="matrix-section">
-        <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Warm Adjustments (+1° Hue)</span>
+        <!-- <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Warm Adjustments (+1° Hue)</span> -->
         <div class="matrix-scroll-wrapper">
           <div class="matrix-grid" id="rowWarm"></div>
         </div>
       </div>
 
       <div class="matrix-section">
-        <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Cool Adjustments (-1° Hue)</span>
+        <!-- <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Cool Adjustments (-1° Hue)</span> -->
         <div class="matrix-scroll-wrapper">
           <div class="matrix-grid" id="rowCool"></div>
         </div>
       </div>
 
       <div class="matrix-section">
-        <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Saturation (Chroma Balance)</span>
+        <!-- <span class="variant-code" style="font-weight:600; text-align: left;">Fractional Saturation (Chroma Balance)</span> -->
         <div class="matrix-scroll-wrapper">
           <div class="matrix-grid" id="rowChroma"></div>
         </div>
@@ -860,11 +860,11 @@
       mCtx.fillText(`Pantone: ${calculatePantoneTCXProxy(activeFabricRGB.r, activeFabricRGB.g, activeFabricRGB.b)}`, 60, 615);
 
       const categories = [
-        { label: 'MICRO TINTS (LIGHTNESS STEPS +1.2%)', data: systemMatrixPayload.tints },
-        { label: 'MICRO SHADES (LIGHTNESS STEPS -1.2%)', data: systemMatrixPayload.shades },
-        { label: 'FRACTIONAL WARM ADJS (+1° HUE SHIFTS)', data: systemMatrixPayload.warm },
-        { label: 'FRACTIONAL COOL ADJS (-1° HUE SHIFTS)', data: systemMatrixPayload.cool },
-        { label: 'FRACTIONAL CHROMA STEPS (SATURATION CHANNELS)', data: systemMatrixPayload.chroma }
+        { label: '', data: systemMatrixPayload.tints },
+        { label: '', data: systemMatrixPayload.shades },
+        { label: '', data: systemMatrixPayload.warm },
+        { label: '', data: systemMatrixPayload.cool },
+        { label: '', data: systemMatrixPayload.chroma }
       ];
 
       let initialY = 160;
