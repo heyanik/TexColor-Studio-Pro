@@ -843,17 +843,17 @@
       mapCanvas.width = 1400; mapCanvas.height = 1000;
       const mCtx = mapCanvas.getContext('2d');
 
-      mCtx.fillStyle = '#0a0b10'; mCtx.fillRect(0,0,mapCanvas.width, mapCanvas.height);
+      mCtx.fillStyle = '#ffffff'; mCtx.fillRect(0,0,mapCanvas.width, mapCanvas.height);
       mCtx.strokeStyle = '#22263f'; mCtx.lineWidth = 2; mCtx.strokeRect(30, 30, mapCanvas.width - 60, mapCanvas.height - 60);
 
-      mCtx.fillStyle = '#ffffff'; mCtx.font = 'bold 28px sans-serif'; mCtx.fillText('TEXCOLOR STUDIO PRO - CLOSEST NEIGHBOR SPECS', 60, 85);
+      mCtx.fillStyle = '#0a0b10'; mCtx.font = 'bold 28px sans-serif'; mCtx.fillText('TEXCOLOR STUDIO PRO - CLOSEST NEIGHBOR SPECS', 60, 85);
       mCtx.fillStyle = '#64748b'; mCtx.font = '14px monospace'; mCtx.fillText('HYPER-LOCAL NUANCE WORKSPACE SHEET FOR ADOBE PHOTOSHOP SAMPLING', 60, 115);
 
       const targetMainHex = rgbToHex(activeFabricRGB.r, activeFabricRGB.g, activeFabricRGB.b);
       mCtx.fillStyle = targetMainHex; mCtx.fillRect(60, 160, 320, 320);
       mCtx.strokeRect(60, 160, 320, 320);
 
-      mCtx.fillStyle = '#ffffff'; mCtx.font = 'bold 22px sans-serif'; mCtx.fillText('Isolated Fabric Base', 60, 520);
+      mCtx.fillStyle = '#0a0b10'; mCtx.font = 'bold 22px sans-serif'; mCtx.fillText('Isolated Fabric Base', 60, 520);
       mCtx.fillStyle = '#64748b'; mCtx.font = '16px monospace';
       mCtx.fillText(`HEX: ${targetMainHex}`, 60, 555);
       mCtx.fillText(`RGB: ${activeFabricRGB.r}, ${activeFabricRGB.g}, ${activeFabricRGB.b}`, 60, 585);
